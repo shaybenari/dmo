@@ -1,0 +1,300 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		84F9B18D163CF11900919F00 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F9B18C163CF11900919F00 /* UIKit.framework */; };
+		84F9B18F163CF11900919F00 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F9B18E163CF11900919F00 /* Foundation.framework */; };
+		84F9B191163CF11900919F00 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F9B190163CF11900919F00 /* CoreGraphics.framework */; };
+		84F9B197163CF11900919F00 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84F9B195163CF11900919F00 /* InfoPlist.strings */; };
+		84F9B199163CF11900919F00 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F9B198163CF11900919F00 /* main.m */; };
+		84F9B19D163CF11900919F00 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F9B19C163CF11900919F00 /* AppDelegate.m */; };
+		84F9B1A0163CF11900919F00 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F9B19E163CF11900919F00 /* MainStoryboard_iPhone.storyboard */; };
+		84F9B1A3163CF11900919F00 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F9B1A1163CF11900919F00 /* MainStoryboard_iPad.storyboard */; };
+		84F9B1A6163CF11900919F00 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F9B1A5163CF11900919F00 /* ViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		84F9B188163CF11900919F00 /* ArutzSheva7.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArutzSheva7.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		84F9B18C163CF11900919F00 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		84F9B18E163CF11900919F00 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		84F9B190163CF11900919F00 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		84F9B194163CF11900919F00 /* ArutzSheva7-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ArutzSheva7-Info.plist"; sourceTree = "<group>"; };
+		84F9B196163CF11900919F00 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		84F9B198163CF11900919F00 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		84F9B19A163CF11900919F00 /* ArutzSheva7-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ArutzSheva7-Prefix.pch"; sourceTree = "<group>"; };
+		84F9B19B163CF11900919F00 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		84F9B19C163CF11900919F00 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		84F9B19F163CF11900919F00 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		84F9B1A2163CF11900919F00 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		84F9B1A4163CF11900919F00 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		84F9B1A5163CF11900919F00 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		84F9B185163CF11900919F00 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84F9B18D163CF11900919F00 /* UIKit.framework in Frameworks */,
+				84F9B18F163CF11900919F00 /* Foundation.framework in Frameworks */,
+				84F9B191163CF11900919F00 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		84F9B17D163CF11900919F00 = {
+			isa = PBXGroup;
+			children = (
+				84F9B192163CF11900919F00 /* ArutzSheva7 */,
+				84F9B18B163CF11900919F00 /* Frameworks */,
+				84F9B189163CF11900919F00 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		84F9B189163CF11900919F00 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				84F9B188163CF11900919F00 /* ArutzSheva7.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		84F9B18B163CF11900919F00 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				84F9B18C163CF11900919F00 /* UIKit.framework */,
+				84F9B18E163CF11900919F00 /* Foundation.framework */,
+				84F9B190163CF11900919F00 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		84F9B192163CF11900919F00 /* ArutzSheva7 */ = {
+			isa = PBXGroup;
+			children = (
+				84F9B19B163CF11900919F00 /* AppDelegate.h */,
+				84F9B19C163CF11900919F00 /* AppDelegate.m */,
+				84F9B19E163CF11900919F00 /* MainStoryboard_iPhone.storyboard */,
+				84F9B1A1163CF11900919F00 /* MainStoryboard_iPad.storyboard */,
+				84F9B1A4163CF11900919F00 /* ViewController.h */,
+				84F9B1A5163CF11900919F00 /* ViewController.m */,
+				84F9B193163CF11900919F00 /* Supporting Files */,
+			);
+			path = ArutzSheva7;
+			sourceTree = "<group>";
+		};
+		84F9B193163CF11900919F00 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				84F9B194163CF11900919F00 /* ArutzSheva7-Info.plist */,
+				84F9B195163CF11900919F00 /* InfoPlist.strings */,
+				84F9B198163CF11900919F00 /* main.m */,
+				84F9B19A163CF11900919F00 /* ArutzSheva7-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		84F9B187163CF11900919F00 /* ArutzSheva7 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84F9B1A9163CF11900919F00 /* Build configuration list for PBXNativeTarget "ArutzSheva7" */;
+			buildPhases = (
+				84F9B184163CF11900919F00 /* Sources */,
+				84F9B185163CF11900919F00 /* Frameworks */,
+				84F9B186163CF11900919F00 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ArutzSheva7;
+			productName = ArutzSheva7;
+			productReference = 84F9B188163CF11900919F00 /* ArutzSheva7.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		84F9B17F163CF11900919F00 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = Admin;
+			};
+			buildConfigurationList = 84F9B182163CF11900919F00 /* Build configuration list for PBXProject "ArutzSheva7" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 84F9B17D163CF11900919F00;
+			productRefGroup = 84F9B189163CF11900919F00 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				84F9B187163CF11900919F00 /* ArutzSheva7 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		84F9B186163CF11900919F00 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84F9B197163CF11900919F00 /* InfoPlist.strings in Resources */,
+				84F9B1A0163CF11900919F00 /* MainStoryboard_iPhone.storyboard in Resources */,
+				84F9B1A3163CF11900919F00 /* MainStoryboard_iPad.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		84F9B184163CF11900919F00 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84F9B199163CF11900919F00 /* main.m in Sources */,
+				84F9B19D163CF11900919F00 /* AppDelegate.m in Sources */,
+				84F9B1A6163CF11900919F00 /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		84F9B195163CF11900919F00 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84F9B196163CF11900919F00 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		84F9B19E163CF11900919F00 /* MainStoryboard_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84F9B19F163CF11900919F00 /* en */,
+			);
+			name = MainStoryboard_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		84F9B1A1163CF11900919F00 /* MainStoryboard_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84F9B1A2163CF11900919F00 /* en */,
+			);
+			name = MainStoryboard_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		84F9B1A7163CF11900919F00 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		84F9B1A8163CF11900919F00 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		84F9B1AA163CF11900919F00 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ArutzSheva7/ArutzSheva7-Prefix.pch";
+				INFOPLIST_FILE = "ArutzSheva7/ArutzSheva7-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		84F9B1AB163CF11900919F00 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ArutzSheva7/ArutzSheva7-Prefix.pch";
+				INFOPLIST_FILE = "ArutzSheva7/ArutzSheva7-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		84F9B182163CF11900919F00 /* Build configuration list for PBXProject "ArutzSheva7" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84F9B1A7163CF11900919F00 /* Debug */,
+				84F9B1A8163CF11900919F00 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		84F9B1A9163CF11900919F00 /* Build configuration list for PBXNativeTarget "ArutzSheva7" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84F9B1AA163CF11900919F00 /* Debug */,
+				84F9B1AB163CF11900919F00 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 84F9B17F163CF11900919F00 /* Project object */;
+}
