@@ -5,6 +5,37 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1498"/>
     </dependencies>
     <scenes>
+        <!--Camera View Controller-->
+        <scene sceneID="rY1-O1-WHb">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tbh-Lg-MtW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="esi-Nf-QL7" customClass="CameraViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FXL-KW-To6">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="GNt-nP-qSb">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Zrq-gT-qFW">
+                        <barButtonItem key="rightBarButtonItem" title="הצג" id="UsT-Re-ZNo">
+                            <connections>
+                                <action selector="showCameraAction:" destination="esi-Nf-QL7" id="WyA-js-GjI"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="imageView" destination="GNt-nP-qSb" id="fgC-0R-xIh"/>
+                        <outlet property="saveImageBotton" destination="UsT-Re-ZNo" id="32y-KE-2nW"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="356" y="-664"/>
+        </scene>
         <!--List View Controller - 1-->
         <scene sceneID="H4n-iH-BkE">
             <objects>
@@ -54,7 +85,7 @@
                             <outlet property="delegate" destination="hqT-qd-GWp" id="kHh-LE-FWg"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="חדשות" image="web.png" id="1mb-zq-Lpw"/>
+                    <tabBarItem key="tabBarItem" title="חדשות" image="news1(1).png" id="1mb-zq-Lpw"/>
                     <navigationItem key="navigationItem" title="ערוץ 7" id="giF-2p-g1Y"/>
                 </tableViewController>
             </objects>
@@ -138,7 +169,7 @@
             </objects>
             <point key="canvasLocation" x="1351" y="79"/>
         </scene>
-        <!--View Controller-->
+        <!--View Controller - שיחה אישית-->
         <scene sceneID="5">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
@@ -175,6 +206,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="שיחה אישית" image="chat.png" id="V4K-XB-0lO"/>
                     <navigationItem key="navigationItem" id="fDL-af-AlS"/>
                     <connections>
                         <outlet property="forumButton" destination="arR-Cp-3et" id="Y9t-cu-3JH"/>
@@ -210,9 +242,9 @@
                 <tabBarController id="0Ef-gm-O8o" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="ערוץ שבע" id="YL5-jy-tD5">
-                        <barButtonItem key="rightBarButtonItem" title="שיחה אישית" id="cle-0g-yMu">
+                        <barButtonItem key="rightBarButtonItem" title="מייל מהשטח" id="cle-0g-yMu">
                             <connections>
-                                <segue destination="2" kind="push" id="Ihy-ft-2qN"/>
+                                <segue destination="esi-Nf-QL7" kind="push" id="oj8-wb-kS2"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -226,6 +258,7 @@
                         <segue destination="xzx-oe-LOX" kind="relationship" relationship="viewControllers" id="0mr-FP-IA0"/>
                         <segue destination="uUT-D3-nxq" kind="relationship" relationship="viewControllers" id="81j-jC-l2a"/>
                         <segue destination="xbD-gX-KD2" kind="relationship" relationship="viewControllers" id="3Rh-Nw-j1a"/>
+                        <segue destination="2" kind="relationship" relationship="viewControllers" id="Bv1-xO-5DC"/>
                     </connections>
                 </tabBarController>
             </objects>
@@ -283,7 +316,6 @@
                     <tabBarItem key="tabBarItem" title="דעות" image="about.png" id="duj-kD-Lqb"/>
                     <navigationItem key="navigationItem" title="ערוץ 7" id="ArJ-oN-rbO">
                         <barButtonItem key="backBarButtonItem" title="כל החדשות" id="eVq-EM-Edg"/>
-                        <barButtonItem key="rightBarButtonItem" title="שיחה אישית" id="CDb-Yn-eaX"/>
                     </navigationItem>
                 </tableViewController>
             </objects>
@@ -519,11 +551,20 @@
         <image name="Default.png" width="738" height="714"/>
         <image name="about.png" width="32" height="32"/>
         <image name="button.png" width="454" height="62"/>
+        <image name="chat.png" width="40" height="40"/>
         <image name="contact.png" width="37" height="31"/>
+        <image name="news1(1).png" width="40" height="40"/>
         <image name="staroff.png" width="29" height="29"/>
-        <image name="web.png" width="16" height="16"/>
     </resources>
     <classes>
+        <class className="CameraViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CameraViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="showCameraAction:"/>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="saveImageBotton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
         <class className="ContactViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ContactViewController.h"/>
             <relationships>
