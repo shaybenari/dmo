@@ -13,6 +13,7 @@
 @end
 
 @implementation KarikaturaViewController
+@synthesize pic;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,11 +27,23 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    UIActivityIndicatorView *av = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    av.frame=CGRectMake(145, 160, 25, 25);
+    av.tag  = 100;
+    
+    [self.view addSubview:av];
+    [av startAnimating];
+    NSString* imageUrlString=@"http://a7.org/Resizer.ashx?source=album&album=1&image=45307&a=450&b=1200&save=1";
+    NSURL* imageUrl=[NSURL URLWithString:imageUrlString];
+    NSData* imageDate=[NSData dataWithContentsOfURL:imageUrl];
+    pic.image=[UIImage imageWithData:imageDate];
+    [av stopAnimating];
 	// Do any additional setup after loading the view.
 }
 
 - (void)viewDidUnload
 {
+    [self setPic:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

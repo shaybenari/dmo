@@ -10,4 +10,5 @@
 
 @interface ListViewController : UITableViewController
 @property(strong,nonatomic) NSMutableArray *allArticles;
+@property (strong, nonatomic) IBOutlet UIImageView *mainPic;
 @end

@@ -5,10 +5,16 @@
 //  Created by Admin on 11/1/12.
 //  Copyright (c) 2012 Admin. All rights reserved.
 //
-
+#import "detailsViewController.h"
 #import "savedViewController.h"
+#import "Article.h"
+@interface savedViewController (){
+    NSMutableArray *jsonResults;
+    NSUserDefaults *prefs;
+    UIBarButtonItem *but;
+    
 
-@interface savedViewController ()
+}
 
 @end
 
@@ -18,22 +24,42 @@
 {
     self = [super initWithStyle:style];
     if (self) {
+        
         // Custom initialization
     }
     return self;
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    
+    but=        self.tabBarController.navigationItem.rightBarButtonItem;
+        self.tabBarController.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [super viewWillAppear:animated];
+    prefs = [NSUserDefaults standardUserDefaults];
+    
+    
+    NSData *myDecodedObject = [prefs objectForKey:@"saved"];
+    NSMutableArray *lastSeen =[NSKeyedUnarchiver unarchiveObjectWithData: myDecodedObject];
+    
+    jsonResults=[NSMutableArray arrayWithArray:lastSeen];
+
+    [self.tableView reloadData];
+    
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    
+    [super viewWillDisappear:animated];
+                self.tabBarController.navigationItem.rightBarButtonItem = but;
+}
 - (void)viewDidLoad
 {
+    
     [super viewDidLoad];
+    [self.tableView setRowHeight:70];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    
 }
-
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -43,85 +69,80 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return YES;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    
+    
+    return [jsonResults count];
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"NewsCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    Article* line =[jsonResults objectAtIndex:indexPath.row] ;
+    if([line.title length]>22){
+        NSString* last =[line.title substringToIndex:22];
+        cell.textLabel.text=[last substringToIndex:[last rangeOfString:@" " options:NSBackwardsSearch].location];
+    }
+    else{
+        cell.textLabel.text=line.title;
+        
+    }
+    cell.detailTextLabel.text=[line.pubDate substringToIndex:22];
+    NSString* imageUrlString=line.imagesrc;
+    //    AsynchronousImageView *asyncImage=[[AsynchronousImageView alloc] init];
+    //  [asyncImage loadImageFromURLString:imageUrlString];
     
-    // Configure the cell...
+    NSURL* imageUrl=[NSURL URLWithString:imageUrlString];
+    NSData* imageDate=[NSData dataWithContentsOfURL:imageUrl];
+    cell.imageView.image=[UIImage imageWithData:imageDate];
     
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
+
+
+
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
 
-/*
-// Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+        [jsonResults removeObjectAtIndex:indexPath.row];
+        //[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [tableView reloadData];
+        [prefs setObject:jsonResults forKey:@"saved"];
+        
+        [prefs synchronize];
+    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+    }
 }
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+-(BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath{
+    return NO;
+}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    if ([[segue identifier] hasPrefix:@"details"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        detailsViewController* vc= (detailsViewController*)[segue destinationViewController];
+        Article* line =[jsonResults objectAtIndex:indexPath.row] ;
+        vc.current=line;
+    }
 }
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
-}
-
 @end

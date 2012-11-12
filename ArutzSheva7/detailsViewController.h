@@ -7,20 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class Article;
 @interface detailsViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UIImageView *picture;
 @property (strong, nonatomic) IBOutlet UITextView *details;
-@property (strong,nonatomic) NSString* picturePath;
-@property (strong,nonatomic) NSString* detailsText;
+@property (strong,nonatomic) Article *current;
+
+@property (strong, nonatomic) IBOutlet UIScrollView *scrolv;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UILabel *dateLabel;
-@property (strong,nonatomic) NSString* titleString;
+
 - (IBAction)increase:(UIBarButtonItem *)sender;
 - (IBAction)decrease:(UIBarButtonItem *)sender;
 - (IBAction)share:(id)sender;
 - (IBAction)response:(id)sender;
-@property (strong,nonatomic) NSString* date;
+- (IBAction)saveJob:(UIBarButtonItem *)sender;
 @property NSInteger fontsize;
-@property (strong,nonatomic) NSString* link;
+@property (strong,nonatomic) NSString *catagory;
+
 @end

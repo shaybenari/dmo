@@ -35,18 +35,18 @@ didStartElement:(NSString *)elementName
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
     if (!currentElementValue) {
         // init the ad hoc string with the value
-        currentElementValue = [[NSMutableString alloc] initWithString:string];
+        currentElementValue = [[NSMutableString alloc] initWithString:[string stringByReplacingOccurrencesOfString:@"\n" withString:@""]];
     } else {
         // append value to the ad hoc string
         [currentElementValue appendString:string];
     }
-    NSLog(@"Processing value for : %@", string);
+    NSLog(@"Processing value for : %@ and %@", string,currentElementValue);
 }
 - (void)parser:(NSXMLParser *)parser
  didEndElement:(NSString *)elementName
   namespaceURI:(NSString *)namespaceURI
  qualifiedName:(NSString *)qName {
-    
+    NSLog(@"title ===%@",elementName);
     if ([elementName isEqualToString:@"rss"]) {
         // We reached the end of the XML document
         return;
@@ -59,25 +59,31 @@ didStartElement:(NSString *)elementName
         // release user object
         article = nil;
     }
-    else if ([elementName isEqualToString:@"description"] && [currentElementValue length]>5) {
+   /* else if ([elementName isEqualToString:@"description"] && [currentElementValue length]>1) {
         NSArray* des =[currentElementValue componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"="]];
         //NSArray* des2 =[currentElementValue componentsSeparatedByString:@"left>" ];
        // NSArray* des3 = [currentElementValue componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+
         if ([des count]>1){
+            NSLog(@"in %@",currentElementValue);
+
         NSArray* imagestyle = [[des objectAtIndex:1] componentsSeparatedByString:@" "];
         NSString* imageNoTag= [[imagestyle objectAtIndex:0] stringByReplacingOccurrencesOfString:@"'" withString:@""];
+        
         [article setValue:imageNoTag forKey:@"image"];
-            NSRange r= [currentElementValue rangeOfString:@"<[^>]+>" options:NSRegularExpressionSearch];
-            [article setValue:[[currentElementValue stringByReplacingCharactersInRange:r withString:@""] stringByReplacingOccurrencesOfString:@"<br/>" withString:@""] forKey:@"description"];
-       
         }
-        else{
-            [article setValue:[[des objectAtIndex:0] stringByReplacingOccurrencesOfString:@"<br/>" withString:@""] forKey:@"description"];
+        NSRange r;
+            NSString* desc=[currentElementValue copy];
+            while ((r= [desc rangeOfString:@"<[^>]+>" options:NSRegularExpressionSearch]).location!=NSNotFound){
+                desc=[desc stringByReplacingCharactersInRange:r withString:@""] ;
             
- 
-        }
+            }
+            [article setValue:desc forKey:@"description"];
+            NSLog(@"%@",desc);
+       
+       
 
-    }
+    }*/
     else {
         // The parser hit one of the element values.
         // This syntax is possible because User object

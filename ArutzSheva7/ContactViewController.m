@@ -12,7 +12,9 @@
 
 @end
 
-@implementation ContactViewController
+@implementation ContactViewController{
+    UIActivityIndicatorView *av;
+}
 @synthesize mail=_mail;
 @synthesize phone=_phone;
 @synthesize name=_name;
@@ -53,13 +55,11 @@
 -(void)sendok:(NSData *)responseData{
     UIAlertView* someError;
     if(!responseData){
-        someError= [[UIAlertView alloc] initWithTitle:@"בעית רשת" message:@"בדוק את הרשת שלך" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        someError= [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error",nil) message:NSLocalizedString(@"Can't connect. Please check your internet Connection", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [someError show];
     }
     else{
-        
-            someError= [[UIAlertView alloc] initWithTitle:@"צור קשר" message:@"נשלח בהצלחה" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        
+        someError= [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"תגובתך נשלחה",nil) message:NSLocalizedString(@"התגובה תפורסם לאחר אישור המערכת", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [someError show];
     }
 }
@@ -76,7 +76,12 @@
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:kjsonURL];
         [request setHTTPMethod:@"POST"];
         [request setHTTPBody:postData];
+        av = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        av.frame=CGRectMake(145, 160, 25, 25);
+        av.tag  = 100;
         
+        [self.view addSubview:av];
+        [av startAnimating];
         NSOperationQueue *queue = [[NSOperationQueue alloc] init];
         [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
          {
@@ -84,19 +89,27 @@
              if(error) [self performSelectorOnMainThread:@selector(errorHandling:) withObject:error waitUntilDone:YES];
              else if(((NSHTTPURLResponse*)response).statusCode!=200) [self performSelectorOnMainThread:@selector(errorHTTPHandling:) withObject:response waitUntilDone:YES];
              else [self performSelectorOnMainThread:@selector(sendok:) withObject:data waitUntilDone:YES];
+         
+             [self performSelectorOnMainThread:@selector(stopC:) withObject:nil waitUntilDone:YES];
+             
+             
          }];
-        //[NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
-       //  {
-       //      [self performSelectorOnMainThread:@selector(sendok:) withObject:data waitUntilDone:YES];
-       //  }];
     }
-}
+        
+    }
+    - (void)stopC:(NSData *)responseData{
+        
+        [av stopAnimating];
+
+    }
+         
+     
 -(void)errorHTTPHandling:(NSURLResponse*)response{
     NSString* msg;
     UIAlertView* someError;
     if(((NSHTTPURLResponse*)response).statusCode==403) msg=NSLocalizedString(@"שם או סיסמא שגויים",nil);
     else if(((NSHTTPURLResponse*)response).statusCode==500) msg=NSLocalizedString(@"בעיה בשרת",nil);
-    someError= [[UIAlertView alloc] initWithTitle:@"צור קשר" message:msg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    someError= [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"contactus",nil) message:msg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [someError show];
 }
 
@@ -107,8 +120,7 @@
     NSLog(@"%d",error.code);
     if(error.code==-1009) msg=NSLocalizedString(@"אין רשת. בדוק את הרשת האלחוטית",nil);
     else msg=error.localizedDescription;
-    someError= [[UIAlertView alloc] initWithTitle:@"צור קשר" message:msg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [someError show];
+    someError= [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"contactus",nil) message:msg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];    [someError show];
 
 }
 

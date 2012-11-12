@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface KarikaturaViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UIImageView *pic;
 
 @end
